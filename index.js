@@ -33,6 +33,15 @@ for (const filePath of walkSync('./src')) {
   if(type == 'GET'){
     app.get(procPath, require(`./src${procPath}/${type}.js`))
   }
+  if(type == 'POST'){
+    app.post(procPath, require(`./src${procPath}/${type}.js`))
+  }
+  if(type == 'PUT'){
+    app.put(procPath, require(`./src${procPath}/${type}.js`))
+  }
+  if(type == 'DELETE'){
+    app.delete(procPath, require(`./src${procPath}/${type}.js`))
+  }
 }
 
 app.listen(
