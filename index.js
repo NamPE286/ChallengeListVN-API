@@ -4,6 +4,7 @@ const cors = require('cors')
 const fs = require('fs')
 const path = require('path');
 const app = express()
+const PORT = process.env.PORT || 5050
 
 app.use(express.json())
 app.use(cors())
@@ -48,8 +49,8 @@ for (const filePath of walkSync('./src')) {
 }
 
 app.listen(
-  process.env.EXPRESS_PORT,
+  PORT,
   () => {
-    console.log(`Server running on http://localhost:${process.env.EXPRESS_PORT}`)
+    console.log(`Server running on http://localhost:${PORT}`)
   }
 )
