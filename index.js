@@ -1,13 +1,12 @@
+require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const fs = require('fs')
 const path = require('path');
 const app = express()
-require('dotenv').config()
 
 app.use(express.json())
 app.use(cors())
-
 
 function* walkSync(dir) {
   const files = fs.readdirSync(dir, { withFileTypes: true });
