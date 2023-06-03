@@ -22,20 +22,20 @@ function *walkSync(dir) {
 
 for (const filePath of walkSync('./src')) {
   var reqPath = './' + filePath.split('\\').join('/').slice(0, -3)
-  var route = '/' + reqPath.split('/').slice(2, -1).join('/')
-  console.log(reqPath, route)
+  var route = '/' + reqPath.split('/').slice(2, -1).join('/').replace('[', ':').replace(']', '')
   if(reqPath.endsWith('GET', reqPath.length)){
     app.get(route, require(reqPath))
   }
   if(reqPath.endsWith('POST', reqPath.length)){
-    app.post(route, require(reqPath))
+    app.post(route, require('./middleware/checkUser'), require(reqPath))
   }
   if(reqPath.endsWith('PUT', reqPath.length)){
-    app.put(route, require(reqPath))
+    app.put(route, require('./middleware/checkUser'), require(reqPath))
   }
   if(reqPath.endsWith('DELETE', reqPath.length)){
-    app.delete(route, require(reqPath))
+    app.delete(route, require('./middleware/checkUser'), require(reqPath))
   }
+  console.log(`Loaded path ${reqPath} to route ${route}`)
 }
 
 app.listen(
