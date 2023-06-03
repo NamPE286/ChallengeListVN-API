@@ -1,4 +1,5 @@
-const supabase = require('../../../config/db')
+require('module-alias/register')
+const supabase = require('@config/db')
 
 let option = {
     "range": {
