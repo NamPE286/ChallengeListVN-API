@@ -21,8 +21,16 @@ function* walkSync(dir) {
 }
 
 for (const filePath of walkSync('./src')) {
-  var reqPath = './' + filePath.split('\\').join('/').slice(0, -3)
-  var route = '/' + reqPath.split('/').slice(2, -1).join('/').replace('[', ':').replace(']', '')
+  var reqPath = './' + filePath
+    .split('\\')
+    .join('/')
+    .slice(0, -3)
+  var route = '/' + reqPath
+    .split('/')
+    .slice(2, -1)
+    .join('/')
+    .replace('[', ':')
+    .replace(']', '')
   if (reqPath.endsWith('GET', reqPath.length)) {
     app.get(route, require(reqPath))
   }
