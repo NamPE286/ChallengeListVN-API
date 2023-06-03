@@ -21,26 +21,20 @@ function *walkSync(dir) {
 }
 
 for (const filePath of walkSync('./src')) {
-  var procPath = filePath.substring(3)
-  var a = procPath.split('\\')
-  var type = a.at(-1).replace('.js', '')
-  a.pop()
-  procPath = a.join('/')
-  if(!procPath){
-    procPath = '/'
+  var reqPath = './' + filePath.split('\\').join('/').slice(0, -3)
+  var route = '/' + reqPath.split('/').slice(2, -1).join('/')
+  console.log(reqPath, route)
+  if(reqPath.endsWith('GET', reqPath.length)){
+    app.get(route, require(reqPath))
   }
-  console.log(procPath)
-  if(type == 'GET'){
-    app.get(procPath, require(`./src${procPath}/${type}.js`))
+  if(reqPath.endsWith('POST', reqPath.length)){
+    app.post(route, require(reqPath))
   }
-  if(type == 'POST'){
-    app.post(procPath, require(`./src${procPath}/${type}.js`))
+  if(reqPath.endsWith('PUT', reqPath.length)){
+    app.put(route, require(reqPath))
   }
-  if(type == 'PUT'){
-    app.put(procPath, require(`./src${procPath}/${type}.js`))
-  }
-  if(type == 'DELETE'){
-    app.delete(procPath, require(`./src${procPath}/${type}.js`))
+  if(reqPath.endsWith('DELETE', reqPath.length)){
+    app.delete(route, require(reqPath))
   }
 }
 
