@@ -2,23 +2,7 @@ require('module-alias/register')
 /** @type {import("@supabase/supabase-js").SupabaseClient} */
 const supabase = require('@config/db')
 
-let option = {
-    "range": {
-        "index": {
-            "start": 0,
-            "end": 100
-        },
-        "rating": {
-            "start": 0,
-            "end": 10000
-        }
-    },
-    "filter": {
-        "showBeatenLevels": true,
-        "userUID": "abcxyz",
-        "sortBy": "rating"
-    }
-}
+let option = require('@config/defaultOption')
 
 /** @type {import("express").RequestHandler} */
 module.exports = async (req, res) => {
