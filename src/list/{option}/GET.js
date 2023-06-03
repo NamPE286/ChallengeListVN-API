@@ -22,16 +22,16 @@ let option = {
 
 /** @type {import("express").RequestHandler} */
 module.exports = async (req, res) => {
-    if(req.params.option) {
+    if (req.params.option) {
         option = req.params.option
     }
     const { data, error } = await supabase
         .from('levels')
         .select()
-        .order('rating')
+        .order('rating', { ascending: false })
         .gte('rating', option.range.rating.start)
         .lte('rating', option.range.rating.end)
         .range(option.range.index.start, option.range.index.end)
-    if(error) res.status(500).send(error)
+    if (error) res.status(500).send(error)
     else res.send(data)
 }
