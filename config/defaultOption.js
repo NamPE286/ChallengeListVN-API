@@ -2,11 +2,11 @@ module.exports = {
     "range": {
         "index": {
             "start": 0,
-            "end": 100
+            "end": 500
         },
         "rating": {
             "start": 0,
-            "end": 10000
+            "end": 100000
         }
     },
     "filter": {
