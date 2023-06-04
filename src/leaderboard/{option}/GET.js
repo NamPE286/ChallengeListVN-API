@@ -7,7 +7,7 @@ let option = require('@config/defaultOption')
 /** @type {import("express").RequestHandler} */
 module.exports = async (req, res) => {
     if (req.params.option) {
-        option = req.params.option
+        option = JSON.parse(decodeURIComponent(req.params.option))
     }
     const { data, error } = await supabase
         .from('players')
