@@ -25,11 +25,11 @@ module.exports = async (req, res) => {
     resData.data = data
     var { data, error } = await supabase
         .from('records')
-        .select()
+        .select('*, players(*)')
         .eq('levelID', id)
         .eq('accepted', true)
         .range(option.range.index.start, option.range.index.end)
     resData.records = data
-    if(error) resData.status(500).send(error)
+    if(error) res.status(500).send(error)
     else res.send(resData)
 }
