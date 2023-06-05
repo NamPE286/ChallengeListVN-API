@@ -29,7 +29,8 @@ module.exports = async (req, res) => {
         .eq('levelID', id)
         .eq('accepted', true)
         .range(option.range.index.start, option.range.index.end)
+        .order('timestamp', { ascending: false })
     resData.records = data
-    if(error) res.status(500).send(error)
+    if (error) res.status(500).send(error)
     else res.send(resData)
 }
