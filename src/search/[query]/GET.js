@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
             .select('*')
             .eq('id', query)
         res.status(200).send({
-            levels: [data],
+            levels: data,
             players: []
         })
         return
@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
             .eq('isHidden', false)
         res.status(200).send({
             levels: [],
-            players: [data]
+            players: data
         })
         return   
     }
