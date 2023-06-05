@@ -47,7 +47,7 @@ module.exports = async (req, res) => {
     var players = []
     for (var i = 0; i < data.length; i++) {
         players.push({
-            id: data[i].uid,
+            uid: data[i].uid,
             name: data[i].name
         })
     }
