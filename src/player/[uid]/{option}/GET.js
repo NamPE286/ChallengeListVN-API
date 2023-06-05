@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
     resData.data = data
     var { data, error } = await supabase
         .from('records')
-        .select('*, players(*)')
+        .select('*, levels(*)')
         .eq('userUID', uid)
         .eq('accepted', true)
         .range(option.range.index.start, option.range.index.end)
