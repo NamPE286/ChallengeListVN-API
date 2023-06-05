@@ -34,7 +34,7 @@ module.exports = async (req, res) => {
         .from('levels')
         .select('*')
         .ilike('name', `%${query}%`)
-        .limit(15)
+        .limit(8)
     for (var i = 0; i < data.length; i++) {
         m[data[i].id] = data[i]
     }
@@ -43,7 +43,7 @@ module.exports = async (req, res) => {
         .select('name, uid, isHidden')
         .ilike('name', `%${query}%`)
         .eq('isHidden', false)
-        .limit(15)
+        .limit(8)
     var players = []
     for (var i = 0; i < data.length; i++) {
         players.push({
