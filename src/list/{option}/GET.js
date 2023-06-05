@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
     }
     const { data, error } = await supabase
         .from('levels')
-        .select()
+        .select('*, players!levels_creatorUID_fkey(*)')
         .order('rating', { ascending: false })
         .gte('rating', option.range.rating.start)
         .lte('rating', option.range.rating.end)

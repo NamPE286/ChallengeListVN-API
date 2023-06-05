@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
     }
     var { data, error } = await supabase
         .from('levels')
-        .select()
+        .select('*, players!levels_creatorUID_fkey(*)')
         .eq('id', id)
         .single()
     resData.data = data
