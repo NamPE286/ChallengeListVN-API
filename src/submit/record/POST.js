@@ -6,15 +6,16 @@ const supabase = require('@config/db')
 module.exports = async (req, res) => {
     const submission = req.body
     var { data, error } = await supabase
-        .from('levels')
+        .from('records')
         .insert(submission)
     if (error) {
         return res.status(500).send(error)
     }
     var { data, error } = await supabase
-        .from('levels')
+        .from('records')
         .select()
-        .eq('id', submission.id)
+        .eq('userUID', submission.userUID)
+        .eq('levelID', submission.levelID)
         .single()
     res.send(data)
 }
