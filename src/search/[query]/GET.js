@@ -20,8 +20,9 @@ module.exports = async (req, res) => {
     if(uuid.validate(query)){
         var { data, error } = await supabase
             .from('players')
-            .select('*')
+            .select('name, uid, isHidden')
             .eq('uid', query)
+            .eq('isHidden', false)
         res.status(200).send({
             levels: [],
             players: [data]
