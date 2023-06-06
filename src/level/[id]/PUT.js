@@ -4,9 +4,14 @@ const supabase = require('@config/db')
 
 /** @type {import("express").RequestHandler} */
 module.exports = async (req, res) => {
-    if(!req.user.isAdmin){
+    if (!req.user.isAdmin) {
         return res.status(403).send()
     }
-    await supabase.rpc('updateRating')
-    res.send()
+    const { error } = await supabase
+        .from('levels')
+        .update(req.body)
+        .eq('id', req.body.id)
+    console.log(error)
+    if(error) return res.status(500).send(error)
+    res.send(req.body)
 }
