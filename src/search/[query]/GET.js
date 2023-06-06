@@ -40,17 +40,11 @@ module.exports = async (req, res) => {
     }
     var { data, error } = await supabase
         .from('players')
-        .select('name, uid, isHidden')
+        .select('name, uid, googleAvatarID')
         .ilike('name', `%${query}%`)
         .eq('isHidden', false)
         .limit(8)
-    var players = []
-    for (var i = 0; i < data.length; i++) {
-        players.push({
-            uid: data[i].uid,
-            name: data[i].name
-        })
-    }
+    var players = data
     var levels = []
     for (const i in m) {
         levels.push(m[i])

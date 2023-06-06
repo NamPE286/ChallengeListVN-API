@@ -10,7 +10,7 @@ async function getUser(userdata){
     var avatarID
     var { data, error } = await supabase
         .from('players')
-        .upsert({
+        .insert({
             uid: userdata.sub,
             name: userdata.user_metadata.full_name,
             email: userdata.user_metadata.email,
