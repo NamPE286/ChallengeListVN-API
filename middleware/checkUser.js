@@ -6,7 +6,7 @@ const supabase = require('@config/db')
 const jwt = require('jsonwebtoken')
 
 async function getUser(userdata){
-    userdata.user_metadata.avatar_url = userdata.user_metadata.avatar_url.replace('https://lh3.googleusercontent.com/a/', '').replace('w=s96-c', '')
+    userdata.user_metadata.avatar_url = userdata.user_metadata.avatar_url.replace('https://lh3.googleusercontent.com/a/', '').replace('=s96-c', '')
     var avatarID
     var { data, error } = await supabase
         .from('players')
