@@ -6,12 +6,15 @@ const supabase = require('@config/db')
 const jwt = require('jsonwebtoken')
 
 async function getUser(userdata){
+    userdata.user_metadata.avatar_url = userdata.user_metadata.avatar_url.replace('https://lh3.googleusercontent.com/a/', '').replace('w=s96-c', '')
+    var avatarID
     var { data, error } = await supabase
         .from('players')
-        .insert({
+        .upsert({
             uid: userdata.sub,
             name: userdata.user_metadata.full_name,
-            email: userdata.user_metadata.email
+            email: userdata.user_metadata.email,
+            googleAvatarID: userdata.user_metadata.avatar_url
         })
     var { data, error } = await supabase
         .from('players')
