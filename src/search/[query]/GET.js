@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
     if (!isNaN(query)) {
         var { data, error } = await supabase
             .from('levels')
-            .select('*')
+            .select('*, players!levels_creatorUID_fkey(*)')
             .eq('id', query)
         res.status(200).send({
             levels: data,
@@ -32,7 +32,7 @@ module.exports = async (req, res) => {
     var m = {}
     var { data, error } = await supabase
         .from('levels')
-        .select('*')
+        .select('*, players!levels_creatorUID_fkey(*)')
         .ilike('name', `%${query}%`)
         .limit(8)
     for (var i = 0; i < data.length; i++) {
