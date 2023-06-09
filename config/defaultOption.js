@@ -10,8 +10,8 @@ module.exports = {
         }
     },
     "filter": {
-        "showBeatenLevels": true,
         "userUID": "abcxyz",
-        "sortBy": "rating"
+        "sortBy": "rating",
+        "ascending": false
     }
 }
