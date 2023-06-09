@@ -10,7 +10,6 @@ module.exports = {
         }
     },
     "filter": {
-        "userUID": "abcxyz",
         "sortBy": "rating",
         "ascending": false
     }
