@@ -10,6 +10,6 @@ module.exports = async (req, res) => {
     const { error } = await supabase
         .from('notifications')
         .insert(req.body)
-    if(error) res.status(500).send()
+    if(error) res.status(500).send(error)
     else res.send(req.body)
 }
