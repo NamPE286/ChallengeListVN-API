@@ -15,7 +15,8 @@ module.exports = async (req, res) => {
     const { uid } = req.params
     var resData = {
         data: {},
-        records: []
+        records: [],
+        levels: []
     }
     var { data, error } = await supabase
         .from('players')
@@ -31,6 +32,14 @@ module.exports = async (req, res) => {
         .range(option.range.index.start, option.range.index.end)
         .order('timestamp', { ascending: false })
     resData.records = data
+    var { data, error } = await supabase
+        .from('levels')
+        .select('*, players!levels_creatorUID_fkey(*))')
+        .eq('creatorUID', uid)
+        .eq('accepted', true)
+        .range(option.range.index.start, option.range.index.end)
+        .order('timestamp', { ascending: false })
+    resData.levels = data
     if (error) res.status(500).send(error)
     else res.send(resData)
 }
