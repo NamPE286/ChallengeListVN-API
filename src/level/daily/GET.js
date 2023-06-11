@@ -2,12 +2,11 @@ require('module-alias/register')
 /** @type {import("@supabase/supabase-js").SupabaseClient} */
 const supabase = require('@config/db')
 
-let option = require('@config/defaultOption')
-
 /** @type {import("express").RequestHandler} */
 module.exports = async (req, res) => {
     var start = new Date();
-    start.setUTCHours(24, 0, 0, 0);
+    console.log(start.getTimezoneOffset())
+    start.setUTCHours(0, 0, 0, 0);
     var { data, error } = await supabase
         .from('levels')
         .select('*, players!levels_creatorUID_fkey(*)')
