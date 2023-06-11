@@ -10,8 +10,8 @@ module.exports = async (req, res) => {
     const { error } = await supabase
         .from('records')
         .delete()
-        .eq('levelID', req.body.levelID)
-        .eq('userUID', req.body.userUID)
+        .eq('levelID', req.params.levelID)
+        .eq('userUID', req.params.userUID)
     console.log(error)
     if(error) return res.status(500).send(error)
     res.send()

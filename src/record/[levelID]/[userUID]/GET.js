@@ -9,6 +9,7 @@ module.exports = async (req, res) => {
         .select()
         .eq('levelID', req.params.levelID)
         .eq('userUID', req.params.userUID)
+        .single()
     console.log(error)
     if(error) return res.status(500).send(error)
     res.send(data)
