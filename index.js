@@ -29,10 +29,10 @@ for (const filePath of walkSync('./src')) {
     .split('/')
     .slice(2, -1)
     .join('/')
-    .replace('[', ':')
-    .replace(']', '')
-    .replace('{', ':')
-    .replace('}', '?')
+    .replaceAll('[', ':')
+    .replaceAll(']', '')
+    .replaceAll('{', ':')
+    .replaceAll('}', '?')
   if (reqPath.endsWith('GET', reqPath.length)) {
     app.get(route, require(reqPath))
   }
