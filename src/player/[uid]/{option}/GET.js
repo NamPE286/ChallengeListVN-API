@@ -37,7 +37,7 @@ module.exports = async (req, res) => {
         .select('*, players!levels_creatorUID_fkey(*))')
         .eq('creatorUID', uid)
         .eq('accepted', true)
-        .order('timestamp', { ascending: false })
+        .order('id', { ascending: false })
         .range(option.range.index.start, option.range.index.end)
     resData.levels = data
     if (error) res.status(500).send(error)
