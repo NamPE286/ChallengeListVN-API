@@ -5,7 +5,6 @@ const supabase = require('@config/db')
 /** @type {import("express").RequestHandler} */
 module.exports = async (req, res) => {
     var start = new Date();
-    console.log(start.getTimezoneOffset())
     start.setUTCHours(0, 0, 0, 0);
     var { data, error } = await supabase
         .from('levels')

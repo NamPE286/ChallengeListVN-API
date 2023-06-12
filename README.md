@@ -1,5 +1,9 @@
 # ChallengeListVN-API
 
+## General
+
+Documentation and source code for each route are placed in the same folder.
+
 ## Parameters
 Required parameters are wrapped inside square brackets (E.g: `/level/[id]`). Optional parameters are wrapped inside curly brackets (E.g: `/level/[id]/{option}`).
 
