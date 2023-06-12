@@ -5,7 +5,7 @@
 **Parameters** :
 
 - id : integers.
-- option : JSON
+- option : JSON.
 
 ```json
 module.exports = {
@@ -13,15 +13,7 @@ module.exports = {
         "index": {
             "start": 0,
             "end": 500
-        },
-        "rating": {
-            "start": 0,
-            "end": 100000
         }
-    },
-    "filter": {
-        "sortBy": "rating",
-        "ascending": false
     }
 }
 ```
@@ -53,5 +45,6 @@ module.exports = {
     "rank": 1,
     "googleAvatarID": "AAcHTtdOqV4glvVD87DQqI3Rs80CWm6MxcPFsspglqjd9w"
   }
-}```
+}
+```
 
