@@ -15,7 +15,7 @@ Bearer <Your_API_key_here>
 ```
 
 ## Responses
-If an invalid request is submitted, or other error occurs, CLVN-api returns only HTTP status code. Otherwise, CLVN-api returns the JSON representation of the resources created or edited.
+If an invalid request is submitted, or other error occurs, CLVN-api returns error HTTP status code and message if possible. Otherwise, CLVN-api returns the JSON representation of the resources created or edited.
 
 ## Status Codes
 Please reference to this link https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
