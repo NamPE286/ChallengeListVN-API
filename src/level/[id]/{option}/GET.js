@@ -2,10 +2,9 @@ require('module-alias/register')
 /** @type {import("@supabase/supabase-js").SupabaseClient} */
 const supabase = require('@config/db')
 
-let option = require('@config/defaultOption')
-
 /** @type {import("express").RequestHandler} */
 module.exports = async (req, res) => {
+    let option = JSON.parse(JSON.stringify(require('@config/defaultOption')))
     if (req.params.option) {
         const a = JSON.parse(decodeURIComponent(req.params.option))
         for (const i in a) {
