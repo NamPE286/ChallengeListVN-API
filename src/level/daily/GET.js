@@ -11,9 +11,5 @@ module.exports = async (req, res) => {
         .select('*, players!levels_creatorUID_fkey(*)')
         .eq('dailyStart', start.toDateString())
         .single()
-    console.log(start.toDateString())
-    if (error) res.status(500).send({
-        test: start.toDateString()
-    })
-    else res.send(data)
+    res.send(data)
 }
