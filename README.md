@@ -1,8 +1,6 @@
 # ChallengeListVN-API
 
 ## General
-
-- Documentation and source code for each route are placed in the same folder.
 - Some GET requests require authentication will be replaced by POST request instead.
 
 ## Parameters and body
