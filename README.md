@@ -2,10 +2,15 @@
 
 ## General
 
-Documentation and source code for each route are placed in the same folder.
+- Documentation and source code for each route are placed in the same folder.
+- Some GET requests require authentication will be replaced by POST request instead.
 
-## Parameters
-Required parameters are wrapped inside square brackets (E.g: `/level/[id]`). Optional parameters are wrapped inside curly brackets (E.g: `/level/[id]/{option}`).
+## Parameters and body
+- Required parameters are wrapped inside square brackets (E.g: `/level/[id]`). 
+- Optional parameters are wrapped inside curly brackets (E.g: `/level/[id]/{option}`).
+- JSON parameters are encoded with `encodeURIComponent()`.
+- POST and PUT requests don't take any parameter, they only take corresponding object in request's body.
+- GET and DELETE requests don't take request's body.
 
 ## Authorization
 All non-GET API request require the use of a generated API key. You can find your API key or generate a new one by going to /settings page of Challenge List VN frontend.
