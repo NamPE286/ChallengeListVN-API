@@ -24,14 +24,13 @@ module.exports = async (req, res) => {
         .single()
     resData.data = data
     var { data, error } = await supabase
-        .from('records')
+        .from('records_view')
         .select('*, levels!inner(*, players!levels_creatorUID_fkey(*))')
         .eq('userUID', uid)
         .eq('accepted', true)
         .eq('levels.accepted', true)
-        .order('timestamp', { ascending: false })
+        .order('rating', { ascending: false })
         .range(option.range.index.start, option.range.index.end)
-    console.log(error)
     resData.records = data
     var { data, error } = await supabase
         .from('levels')
