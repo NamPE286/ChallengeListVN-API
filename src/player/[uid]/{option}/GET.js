@@ -31,6 +31,7 @@ module.exports = async (req, res) => {
         .eq('accepted', true)
         .range(option.range.index.start, option.range.index.end)
         .order('timestamp', { ascending: false })
+    console.log(data, error)
     resData.records = data
     var { data, error } = await supabase
         .from('levels')
@@ -39,6 +40,7 @@ module.exports = async (req, res) => {
         .eq('accepted', true)
         .range(option.range.index.start, option.range.index.end)
         .order('timestamp', { ascending: false })
+    console.log(data, error)
     resData.levels = data
     if (error) res.status(500).send(error)
     else res.send(resData)

@@ -19,6 +19,7 @@ module.exports = async (req, res) => {
         .gte('rating', option.range.rating.start)
         .lte('rating', option.range.rating.end)
         .range(option.range.index.start, option.range.index.end)
+        .eq('accepted', true)
     if (error) res.status(500).send(error)
     else res.send(data)
 }
