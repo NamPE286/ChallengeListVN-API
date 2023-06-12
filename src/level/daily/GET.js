@@ -9,8 +9,9 @@ module.exports = async (req, res) => {
     var { data, error } = await supabase
         .from('levels')
         .select('*, players!levels_creatorUID_fkey(*)')
-        .eq('dailyStart', start.toISOString())
+        .eq('dailyStart', start.toDateString())
         .single()
+    console.log(start.toDateString())
     if (error) res.status(500).send(error)
     else res.send(data)
 }
