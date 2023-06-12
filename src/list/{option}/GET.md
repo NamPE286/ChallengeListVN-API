@@ -7,7 +7,7 @@
 - option : JSON.
 
 ```json
-module.exports = {
+{
     "range": {
         "index": {
             "start": 0,
