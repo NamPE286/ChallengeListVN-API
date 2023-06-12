@@ -7,7 +7,11 @@ module.exports = async (req, res) => {
     if (!req.user.isAdmin) {
         return res.status(403).send()
     }
-    const { error } = await supabase
+    var { error } = await supabase
+        .from('records')
+        .delete()
+        .eq('levelID', req.params.id)
+    var { error } = await supabase
         .from('levels')
         .delete()
         .eq('id', req.params.id)
