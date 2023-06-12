@@ -12,6 +12,9 @@ module.exports = async (req, res) => {
         .eq('dailyStart', start.toDateString())
         .single()
     console.log(start.toDateString())
-    if (error) res.status(500).send(error)
+    if (error) res.status(500).send({
+        error: error,
+        test: start.toDateString()
+    })
     else res.send(data)
 }
