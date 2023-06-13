@@ -5,21 +5,24 @@ const supabase = require('@config/db')
 /** @type {import("express").RequestHandler} */
 module.exports = async (req, res) => {
     const submission = req.body
-    try{
-        delete submission.accepted
+    submission['accepted'] = false
+    var { data, error } = await supabase
+        .from('levels')
+        .select('rating')
+        .eq('id', submission.levelID)
+        .single()
+    console.log(data, error)
+    if(error) {
+        return res.status(404).send()
     }
-    catch{}
+    if(!data.rating) {
+        return res.status(406).send()
+    }
     var { data, error } = await supabase
         .from('records')
         .insert(submission)
     if (error) {
-        return res.status(500).send(error)
+        return res.status(409).send()
     }
-    var { data, error } = await supabase
-        .from('records')
-        .select()
-        .eq('userUID', submission.userUID)
-        .eq('levelID', submission.levelID)
-        .single()
-    res.send(data)
+    res.send(submission)
 }

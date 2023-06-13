@@ -26,7 +26,7 @@ async function getUser(userdata){
 /** @type {import("express").RequestHandler} */
 module.exports = (req, res, next) => {
     if (!req.headers.authorization.startsWith('Bearer')) {
-        return res.status(403).send()
+        return res.status(401).send()
     }
     const token = req.headers.authorization.split(' ')[1]
     jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
@@ -35,6 +35,6 @@ module.exports = (req, res, next) => {
             next()
             return
         }
-        return res.status(403).send()
+        return res.status(401).send()
     })
 }

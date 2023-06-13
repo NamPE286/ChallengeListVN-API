@@ -5,10 +5,7 @@ const supabase = require('@config/db')
 /** @type {import("express").RequestHandler} */
 module.exports = async (req, res) => {
     const submission = req.body
-    try{
-        delete submission.accepted
-    }
-    catch{}
+    submission['accepted'] = false
     var { data, error } = await supabase
         .from('levels')
         .insert(submission)
