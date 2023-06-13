@@ -11,7 +11,6 @@ module.exports = async (req, res) => {
         .select('rating')
         .eq('id', submission.levelID)
         .single()
-    console.log(data, error)
     if(error) {
         return res.status(404).send()
     }
