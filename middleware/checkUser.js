@@ -25,7 +25,7 @@ async function getUser(userdata){
 
 /** @type {import("express").RequestHandler} */
 module.exports = (req, res, next) => {
-    if (!req.headers.authorization.startsWith('Bearer')) {
+    if (!req.headers.authorization || !req.headers.authorization.startsWith('Bearer')) {
         return res.status(401).send()
     }
     const token = req.headers.authorization.split(' ')[1]
