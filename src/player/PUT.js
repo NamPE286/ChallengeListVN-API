@@ -7,6 +7,10 @@ module.exports = async (req, res) => {
     if (!req.user.isAdmin && !req.user.uid == req.body.uid) {
         return res.status(403).send()
     }
+    try{
+        delete req.body.isAdmin
+    }
+    catch{}
     const { error } = await supabase
         .from('players')
         .update(req.body)
