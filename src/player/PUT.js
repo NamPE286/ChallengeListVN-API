@@ -9,6 +9,7 @@ module.exports = async (req, res) => {
     }
     try{
         delete req.body.isAdmin
+        delete req.body.isBanned
     }
     catch{}
     const { error } = await supabase
