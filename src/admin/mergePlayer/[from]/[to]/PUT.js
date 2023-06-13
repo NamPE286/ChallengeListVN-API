@@ -8,6 +8,21 @@ module.exports = async (req, res) => {
         return res.status(403).send()
     }
     const { from, to } = req.params
-    console.log(from, to)
+    
+    var { error } = await supabase
+        .from('records')
+        .update({userUID: to})
+        .eq('userUID', from)
+    console.log(error)
+    var { error } = await supabase
+        .from('levels')
+        .update({creatorUID: to})
+        .eq('creatorUID', from)
+    console.log(error)
+    var { error } = await supabase
+        .from('players')
+        .delete()
+        .eq('uid', from)
+    if(error) return res.status(500).send()
     res.send()
 }
