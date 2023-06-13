@@ -10,12 +10,7 @@ module.exports = async (req, res) => {
         .from('levels')
         .insert(submission)
     if (error) {
-        return res.status(500).send(error)
+        return res.status(409).send()
     }
-    var { data, error } = await supabase
-        .from('levels')
-        .select()
-        .eq('id', submission.id)
-        .single()
-    res.send(data)
+    res.send(submission)
 }
