@@ -34,7 +34,7 @@ for (const filePath of walkSync('./src')) {
     .replaceAll('{', ':')
     .replaceAll('}', '?')
   if (reqPath.endsWith('GET', reqPath.length)) {
-    app.get(route, require(reqPath))
+    app.get(route, require('./middleware/setCaching'), require(reqPath))
   }
   if (reqPath.endsWith('POST', reqPath.length)) {
     app.post(route, require('./middleware/checkUser'), require(reqPath))
