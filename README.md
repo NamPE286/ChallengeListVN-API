@@ -2,7 +2,7 @@
 
 ## General
 - Some GET requests require authentication will be replaced by POST request instead.
-- All GET requests will have respone header `Cache-Control: public, s-maxage=10, stale-while-revalidate=3600`
+- All GET requests will have respone header `Cache-Control: public, s-maxage=10, stale-while-revalidate=3600`.
 
 ## Parameters and body
 - Required parameters are wrapped inside square brackets (E.g: `/level/[id]`). 
