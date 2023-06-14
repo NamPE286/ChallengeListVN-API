@@ -13,7 +13,10 @@ async function getUser(userdata){
             uid: userdata.sub,
             name: userdata.user_metadata.full_name,
             email: userdata.user_metadata.email,
-            googleAvatarID: userdata.user_metadata.avatar_url
+            googleAvatarID: userdata.user_metadata.avatar_url,
+            isAdmin: false,
+            isBanned: false,
+            isHidden: false
         })
     var { data, error } = await supabase
         .from('players')
