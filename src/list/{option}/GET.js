@@ -6,6 +6,7 @@ const supabase = require('@config/db')
 module.exports = async (req, res) => {
     let option = JSON.parse(JSON.stringify(require('@config/defaultOption')))
     if (req.params.option) {
+        res.removeHeader('Cache-Control')
         const a = JSON.parse(decodeURIComponent(req.params.option))
         for(const i in a){
             option[i] = a[i]
