@@ -1,4 +1,6 @@
 require('module-alias/register')
+const sendWebhook = require('../../../etc/sendWebhook')
+
 /** @type {import("@supabase/supabase-js").SupabaseClient} */
 const supabase = require('@config/db')
 
@@ -13,4 +15,5 @@ module.exports = async (req, res) => {
         return res.status(409).send()
     }
     res.send(submission)
+    sendWebhook.notice('New level submitted! Please check it out.')
 }
