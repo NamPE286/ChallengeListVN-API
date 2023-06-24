@@ -25,3 +25,6 @@ If an invalid request is submitted, or other error occurs, CLVN-api returns erro
 
 ## Status Codes
 Please reference to this link https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+
+## Database
+Database is Supabase (Postgres). All table definitions are in `/tableDefinitions` folder. Note that this folder is only used for documentation, any change to file in this folder will not have any effect to the database.
