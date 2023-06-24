@@ -17,7 +17,7 @@
 Bearer <Your_API_key_here>
 ```
 - API key is only valid for 30 minutes. After that, new API key will be generated.
-- To grant admin access for a user, do a query update to Supabase with `service_role` key.
+- To grant admin access for a user, do a update query to Supabase with `service_role` key.
 
 
 ## Responses
