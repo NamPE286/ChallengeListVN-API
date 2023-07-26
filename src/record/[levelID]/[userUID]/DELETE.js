@@ -15,4 +15,5 @@ module.exports = async (req, res) => {
     console.log(error)
     if(error) return res.status(500).send(error)
     res.send()
+    sendWebhook.log(`${req.user.name} (${req.user.uid}) deleted ${req.params.userUID} record of ${req.params.levelID}`)
 }
