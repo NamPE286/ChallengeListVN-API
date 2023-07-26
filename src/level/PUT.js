@@ -14,4 +14,5 @@ module.exports = async (req, res) => {
     console.log(error)
     if(error) return res.status(500).send(error)
     res.send(req.body)
+    sendWebhook.log(`${req.user.name} (${req.user.uid}) modified level ${req.body.id}`)
 }
