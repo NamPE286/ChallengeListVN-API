@@ -12,5 +12,6 @@ module.exports = {
     "filter": {
         "sortBy": "rating",
         "ascending": false
-    }
+    },
+    "limit": 10000
 }
