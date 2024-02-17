@@ -11,7 +11,8 @@ module.exports = async (req, res) => {
             option[i] = a[i]
         }
     }
-    const { data, error } = await supabase
+
+    var x = supabase
         .from('levels')
         .select('*, players!levels_creatorUID_fkey(*)')
         .order(option.filter.sortBy, { ascending: option.filter.ascending })
@@ -20,6 +21,13 @@ module.exports = async (req, res) => {
         .range(option.range.index.start, option.range.index.end)
         .eq('accepted', true)
         .limit(option.limit)
+
+    if(option.filter.length != 0) {
+        console.log('ok')
+        x = x.eq('length', option.filter.length)
+    }
+
+    const { data, error } = await x;
 
     if (error) res.status(500).send(error)
     else res.send(data)
