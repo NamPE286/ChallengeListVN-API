@@ -36,7 +36,7 @@ async function getRecentActivities(uid) {
         })
     }
 
-    res.sort((a, b) => a.data.timestamp > b.data.timestamp ? 1 : -1)
+    res.sort((a, b) => a.data.timestamp < b.data.timestamp ? 1 : -1)
 
     if(res.length <= 5) {
         return res
