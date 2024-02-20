@@ -12,8 +12,6 @@ module.exports = async (req, res) => {
         }
     }
 
-    console.log(option.range.index)
-
     var x = supabase
         .from('levels')
         .select('*, players!levels_creatorUID_fkey(*)')
