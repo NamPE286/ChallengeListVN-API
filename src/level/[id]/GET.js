@@ -11,26 +11,15 @@ module.exports = async (req, res) => {
             option[i] = a[i]
         }
     }
+    
     const { id } = req.params
-    var resData = {
-        data: {},
-        records: []
-    }
+
     var { data, error } = await supabase
         .from('levels')
         .select('*, players!levels_creatorUID_fkey(*)')
         .eq('id', id)
         .single()
-    resData.data = data
-    var { data, error } = await supabase
-        .from('records')
-        .select('*, players(*)')
-        .eq('levelID', id)
-        .eq('accepted', true)
-        .range(option.range.index.start, option.range.index.end)
-        .order('time', { ascending: true })
-        .order('timestamp', { ascending: true })
-    resData.records = data
+
     if (error) res.status(500).send(error)
-    else res.send(resData)
+    else res.send(data)
 }
