@@ -12,15 +12,17 @@ module.exports = async (req, res) => {
         }
     }
 
+    console.log(option.range.index)
+
     var x = supabase
         .from('levels')
         .select('*, players!levels_creatorUID_fkey(*)')
         .order(option.filter.sortBy, { ascending: option.filter.ascending })
         .gte('rating', option.range.rating.start)
         .lte('rating', option.range.rating.end)
-        .range(option.range.index.start, option.range.index.end)
         .eq('accepted', true)
         .limit(option.limit)
+        .range(option.range.index.start, option.range.index.end)
 
     if(option.filter.length != 0) {
         console.log('ok')
