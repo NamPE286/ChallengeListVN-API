@@ -2,12 +2,15 @@ require('module-alias/register')
 /** @type {import("@supabase/supabase-js").SupabaseClient} */
 const supabase = require('@config/db')
 
-async function getData(uid) {
+async function getRecords(uid, option) {
     var { data, error } = await supabase
-        .from('players')
-        .select()
-        .eq('uid', uid)
-        .single()
+        .from('records_view')
+        .select('*, levels!inner(*, players!levels_creatorUID_fkey(*))')
+        .eq('userUID', uid)
+        .eq('accepted', true)
+        .eq('levels.accepted', true)
+        .order('rating', { ascending: false })
+        .range(option.range.index.start, option.range.index.end)
 
     if(error) {
         throw error
@@ -28,5 +31,5 @@ module.exports = async (req, res) => {
 
     const { uid } = req.params
 
-    res.send(await getData(uid))
+    res.send(await getRecords(uid, option))
 }
