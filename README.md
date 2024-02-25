@@ -3,6 +3,7 @@
 ## General
 - Some GET requests require authentication will be replaced by POST request instead.
 - All GET requests will have respone header `Cache-Control: public, s-maxage=10, stale-while-revalidate=3600`.
+- All non-GET requests must provide a token in `Authorization` header.
 
 ## Parameters and body
 - Required parameters are wrapped inside square brackets (E.g: `/level/[id]`). 
@@ -27,4 +28,4 @@ If an invalid request is submitted, or other error occurs, CLVN-api returns erro
 Please reference to this link https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 
 ## Database
-Database is Supabase (Postgres). All table definitions are in `/tableDefinitions` folder. Note that this folder is only used for documentation, any change to file in this folder will not have any effect to the database.
+Database is Supabase (PostgresSQL). All table definitions are in `/SQLDefinition` folder. Note that this folder is only used for documentation, any change to this folder will not have any effect to the database.
