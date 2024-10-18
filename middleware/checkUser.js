@@ -35,6 +35,12 @@ module.exports = (req, res, next) => {
     jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
         if(decoded) {
             req['user'] = await getUser(decoded)
+            
+            if(req['user'].isBanned) {
+                res.status(401).send()
+                return
+            }
+
             next()
             return
         }
