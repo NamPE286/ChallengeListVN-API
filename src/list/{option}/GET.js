@@ -19,7 +19,6 @@ module.exports = async (req, res) => {
         .gte('rating', option.range.rating.start)
         .lte('rating', option.range.rating.end)
         .eq('accepted', true)
-        .limit(option.limit)
         .range(option.range.index.start, option.range.index.end)
 
     if(option.filter.length != 0) {
